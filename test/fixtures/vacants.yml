@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job: MyString
+  description: MyText
+  number_vacancies: 1
+  start_salary: 1
+  end_salary: 1
+  start_date: 2022-07-09
+  company: one
+  region: one
+  modality: one
+
+two:
+  job: MyString
+  description: MyText
+  number_vacancies: 1
+  start_salary: 1
+  end_salary: 1
+  start_date: 2022-07-09
+  company: two
+  region: two
+  modality: two
