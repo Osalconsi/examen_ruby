@@ -1,49 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div class="small-container center-block" >
 
 <p>
-  <strong>Job:</strong>
+  <strong>Cargo:</strong>
   <%= @vacant.job %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descripción del Puesto:</strong>
   <%= @vacant.description %>
 </p>
 
 <p>
-  <strong>Number vacancies:</strong>
+  <strong>Cantidad de Vacantes:</strong>
   <%= @vacant.number_vacancies %>
 </p>
 
 <p>
-  <strong>Start salary:</strong>
-  <%= @vacant.start_salary %>
+  <strong>Salario Mínimo del Cargo:</strong>
+  $ <%= number_with_delimiter(@vacant.start_salary) %>
 </p>
 
 <p>
-  <strong>End salary:</strong>
-  <%= @vacant.end_salary %>
+  <strong>Salario Máximo del Cargo:</strong>
+  $ <%= number_with_delimiter(@vacant.end_salary) %>
 </p>
 
 <p>
-  <strong>Start date:</strong>
+  <strong>Fecha de Inicio del Trabajo:</strong>
   <%= @vacant.start_date %>
 </p>
 
 <p>
-  <strong>Company:</strong>
+  <strong>id_empresa:</strong>
   <%= @vacant.company_id %>
 </p>
 
 <p>
-  <strong>Region:</strong>
-  <%= @vacant.region_id %>
+  <strong>Región en la que se Desarrollará el Trabajo:</strong>
+  <%= @vacant.region.name %>
 </p>
 
 <p>
-  <strong>Modality:</strong>
-  <%= @vacant.modality_id %>
+  <strong>Modalidad de Trabajo:</strong>
+  <%= @vacant.modality.name %>
 </p>
 
-<%= link_to 'Edit', edit_vacant_path(@vacant) %> |
-<%= link_to 'Back', vacants_path %>
+<p id="notice"><%= notice %></p>
+<%if company_signed_in? %>
+  <%= link_to 'Editar', edit_vacant_path(@vacant) %>
+<%end%>|
+<%= link_to 'Ir al Inicio', vacants_path %>
+
+</div>

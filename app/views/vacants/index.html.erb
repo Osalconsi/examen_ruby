@@ -1,43 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Vacants</h1>
-
+<h1>Vacantes Disponibles</h1>
 <table>
   <thead>
     <tr>
-      <th>Job</th>
-      <th>Description</th>
-      <th>Number vacancies</th>
+      <th>Cargo</th>
+      <th>Descripción</th>
       <th>Start salary</th>
       <th>End salary</th>
-      <th>Start date</th>
-      <th>Company</th>
-      <th>Region</th>
-      <th>Modality</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @vacants.each do |vacant| %>
+    <% @vacants.order('created_at DESC').each do |vacant| %>
       <tr>
-        <td><%= vacant.job %></td>
+        <td><h3 class="text-uppercase"><%= vacant.job %></h3></td>
         <td><%= vacant.description %></td>
-        <td><%= vacant.number_vacancies %></td>
-        <td><%= vacant.start_salary %></td>
-        <td><%= vacant.end_salary %></td>
-        <td><%= vacant.start_date %></td>
-        <td><%= vacant.company_id %></td>
-        <td><%= vacant.region_id %></td>
-        <td><%= vacant.modality_id %></td>
-        <td><%= link_to 'Show', vacant %></td>
-        <td><%= link_to 'Edit', edit_vacant_path(vacant) %></td>
-        <td><%= link_to 'Destroy', vacant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>$<%= number_with_delimiter(vacant.start_salary) %></td>
+        <td>$<%= number_with_delimiter(vacant.end_salary) %></td>
+        <td><%= link_to 'Más Detalles', vacant %></td>
+        <% if company_signed_in? %>
+         <td><%= link_to 'Destroy', vacant, method: :delete, data: { confirm: 'Are you sure?' } %><td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Vacant', new_vacant_path %>

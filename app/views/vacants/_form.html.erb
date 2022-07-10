@@ -12,48 +12,49 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :job %>
+    <%= form.label :job, "Cargo" %>
+    <br>
     <%= form.text_field :job %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description, "Descripción del Puesto" %>
+    <br>
     <%= form.text_area :description %>
   </div>
 
   <div class="field">
-    <%= form.label :number_vacancies %>
+    <%= form.label :number_vacancies, "Cantidad de Vacantes" %>
+    <br>
     <%= form.number_field :number_vacancies %>
   </div>
 
   <div class="field">
-    <%= form.label :start_salary %>
+    <%= form.label :start_salary, "Salario Mínimo del Cargo" %>
+    <br>
     <%= form.number_field :start_salary %>
   </div>
 
   <div class="field">
-    <%= form.label :end_salary %>
+    <%= form.label :end_salary, "Salario Máximo del Cargo" %>
+    <br>
     <%= form.number_field :end_salary %>
   </div>
 
   <div class="field">
-    <%= form.label :start_date %>
+    <%= form.label :start_date, "Fecha de Inicio del Trabajo" %>
+    <br>
     <%= form.date_select :start_date %>
   </div>
 
   <div class="field">
-    <%= form.label :company_id %>
-    <%= form.text_field :company_id %>
+    <p>Región en la que se Desarrollará el Trabajo</p>
+    <%= collection_select(:vacant, :region_id, Region.all, :id, :name, prompt: true) %>
   </div>
 
   <div class="field">
-    <%= form.label :region_id %>
-    <%= form.text_field :region_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :modality_id %>
-    <%= form.text_field :modality_id %>
+    <p>Modalidad de Trabajo</p>
+    <%= collection_select(:vacant, :modality_id, Modality.all, :id, :name, prompt: true) %>
   </div>
 
   <div class="actions">

@@ -21,8 +21,9 @@ class VacantsController < ApplicationController
 
   # POST /vacants or /vacants.json
   def create
-    @vacant = Vacant.new(vacant_params)
-
+    @vacant = current_company.vacants.new(vacant_params)
+    @vacant.modality = Modality.find(params[:vacant][:modality_id])
+    @vacant.region = Region.find(params[:vacant][:region_id])
     respond_to do |format|
       if @vacant.save
         format.html { redirect_to vacant_url(@vacant), notice: "Vacant was successfully created." }
@@ -57,6 +58,11 @@ class VacantsController < ApplicationController
     end
   end
 
+  def author
+    @vacant = Vacant.find(params[:company_id])
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vacant
@@ -65,6 +71,15 @@ class VacantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vacant_params
-      params.require(:vacant).permit(:job, :description, :number_vacancies, :start_salary, :end_salary, :start_date, :company_id, :region_id, :modality_id)
+      params.require(:vacant).permit(
+        :job,
+        :description,
+        :number_vacancies,
+        :start_salary,
+        :end_salary,
+        :start_date,
+        :company_id,
+        :region_id,
+        :modality_id)
     end
 end

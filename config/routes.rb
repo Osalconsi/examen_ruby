@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   devise_for :people
   devise_for :companies
   #get 'sites/index'
-  root to: "sites#index"
+  root to: "vacants#index"
 
 end
